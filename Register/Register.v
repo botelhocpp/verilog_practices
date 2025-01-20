@@ -1,4 +1,6 @@
-module Register (
+module Register #(
+    parameter p_INITIAL_VALUE = 0
+)(
     input [31:0] i_D,
     input i_Load,
     input i_Clk,
@@ -8,9 +10,10 @@ module Register (
 
     always @ (posedge i_Clk or posedge i_Rst) begin
         if (i_Rst)
-            o_Q = 0;
+            o_Q = p_INITIAL_VALUE;
         else
-            o_Q = i_D;
+            if (i_Load)
+                o_Q = i_D;
     end
     
 endmodule : Register;

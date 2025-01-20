@@ -8,7 +8,8 @@ module Testbench;
     
     wire [31:0] w_Q;
 
-    Register REGISTER_DUT (
+    Register #( .p_INITIAL_VALUE(32'hFFFF_FFFF) )
+    REGISTER_DUT (
         .i_D(r_D),
         .i_Load(r_Load),
         .i_Clk(r_Clk),
